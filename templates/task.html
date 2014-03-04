@@ -1,0 +1,3 @@
+<li class="list-group-item {{ @item.finished ? 'list-group-item-primary':'' }}">
+    <input type="checkbox" name="{{ @item.id }}" {{ @item.finished ? 'checked="checked"':'' }}/><small>#{{ @item.id }}</small> {{ @item.text }} <a class="remove pull-right" href="delete/{{ @item.id }}" title="delete task"><i class="glyphicon glyphicon-remove-circle"></i></a>
+</li>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>F3-WAWGTDT</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="list">F3 TODO App</a>
+            </div>
+        </div>
+    </div>
+    <div class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <h1>WAWGTDT-App<small><br/>(What are we going to do today?)</small></h1>
+
+                    <p>Just a little demo To-Do app.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="well">
+
+                    <F3:check if="{{ isset(@FLASH.msg) }}">
+                        <div class="alert alert-success">{{ @FLASH.msg }}</div>
+                    </F3:check>
+                    <F3:check if="{{ isset(@FLASH.error) }}">
+                        <div class="alert alert-danger">{{ @FLASH.error }}</div>
+                    </F3:check>
+
+                    <form id="addTask" class="form-inline" action="save" method="POST">
+                        <div class="form-group">
+                            <label class="sr-only" for="tasktext">New Task</label>
+                            <input id="tasktext" type="text" name="text" class="form-control" placeholder="What to do?">
+                        </div>
+                        <button type="submit" class="btn btn-default">add task</button>
+                        <br>
+                        <br>
+                        <ul id="taskList" class="list-group checked-list-box">
+                            <F3:repeat group="{{ @content }}" value="{{ @item }}">
+                                <F3:include href="templates/task.html"/>
+                            </F3:repeat>
+                        </ul>
+                        <input id="update" type="submit" name="update" value="save" class="btn btn-primary" />
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <footer>
+            <p>&copy; F3-Junkies 2014</p>
+        </footer>
+    </div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
+
+<script src="js/vendor/bootstrap.min.js"></script>
+
+<script src="js/main.js"></script>
+</body>
+</html>
